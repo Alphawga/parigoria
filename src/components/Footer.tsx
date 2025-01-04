@@ -1,59 +1,100 @@
+'use client'
+
 import Link from 'next/link'
 import { Instagram, Twitter, Linkedin } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 export default function Footer() {
+  const [currentYear, setCurrentYear] = useState('')
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear().toString())
+  }, [])
+
   return (
-    <footer className="w-full bg-gray-800 text-white py-8 px-4">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-          <ul className="space-y-2">
-            <li><Link href="/about">About Us</Link></li>
-            <li><Link href="/community">Our Community</Link></li>
-            <li><Link href="/team">Our Team</Link></li>
-            <li><Link href="/blog">Blog</Link></li>
-            <li><Link href="/services">Services</Link></li>
-            <li><Link href="/contact">Contact Us</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Support</h3>
-          <ul className="space-y-2">
-            <li><Link href="/faq">FAQs</Link></li>
-            <li><Link href="/resources">Resources</Link></li>
-            <li><Link href="/privacy">Privacy Policy</Link></li>
-            <li><Link href="/terms">Terms of Service</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-          <p>Email: help@parigoria.com</p>
-          <p>Address: Lagos, Nigeria</p>
-          <div className="mt-4 flex space-x-4">
-            <Link href="https://www.instagram.com/officialparigoria?igsh=NnJ2NmVobDU4ajVo" aria-label="Instagram">
-              <Instagram />
+    <footer className="w-full bg-background border-t border-gray-100 dark:border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Logo and Description */}
+          <div className="col-span-1 md:col-span-2">
+            <Link href="/" className="inline-block mb-4">
+              <h3 className="text-2xl font-crimson-pro font-bold text-gray-900 dark:text-white">Parigoriá</h3>
             </Link>
-            <Link href="https://x.com/parigoria_?s=21&t=K3Gog5cgwTs_8ksm3iV7cQ" aria-label="Twitter">
-              <Twitter />
-            </Link>
-            <Link href="https://www.linkedin.com/company/parigoria/" aria-label="LinkedIn">
-              <Linkedin />
+            <p className="text-gray-600 dark:text-gray-300 mb-6 font-crimson-pro">
+              A virtual haven for mental health support, offering education and professional therapy to people of all ages.
+            </p>
+            <div className="flex space-x-4">
+              {[
+                { href: "https://www.instagram.com/officialparigoria?igsh=NnJ2NmVobDU4ajVo", Icon: Instagram },
+                { href: "https://x.com/parigoria_?s=21&t=K3Gog5cgwTs_8ksm3iV7cQ", Icon: Twitter },
+                { href: "https://www.linkedin.com/company/parigoria/", Icon: Linkedin }
+              ].map(({ href, Icon }) => (
+                <Link 
+                  key={href}
+                  href={href}
+                  className="text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit our ${Icon.name}`}
+                >
+                  <Icon className="w-5 h-5" />
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-crimson-pro font-semibold mb-4 text-gray-900 dark:text-white">Quick Links</h3>
+            <ul className="space-y-2">
+              {['About Us', 'Our Community', 'Our Team', 'Blog', 'Services'].map((item) => (
+                <li key={item}>
+                  <Link 
+                    href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors font-crimson-pro"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h3 className="text-lg font-crimson-pro font-semibold mb-4 text-gray-900 dark:text-white">Stay Connected</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4 font-crimson-pro">
+              Get tips and sincere conversations to support your mental well-being.
+            </p>
+            <Link 
+              href="http://eepurl.com/i6RKUs"
+              className="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-colors font-crimson-pro"
+            >
+              Subscribe to Newsletter
             </Link>
           </div>
         </div>
-      </div>
-      <div className="mt-8 text-center">
-        <h3 className="text-lg font-semibold mb-4">Sign Up to Our Newsletter</h3>
-        <p className="mb-4">Get tips, tools, and sincere conversations to support your mental well-being in your inbox.</p>
-        <Link href="http://eepurl.com/i6RKUs" className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition-colors">
-          Subscribe
-        </Link>
-        <p className="mt-4 text-sm">
-          By subscribing to our email newsletter, you agree to and acknowledge that you have read our Privacy Policy and Terms of Service.
-        </p>
-      </div>
-      <div className="mt-8 text-center text-sm">
-        © Parigoriá 2024
+
+        {/* Bottom Section */}
+        <div className="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-gray-600 dark:text-gray-400 text-sm font-crimson-pro">
+              © {currentYear} Parigoriá. All rights reserved.
+            </p>
+            <div className="flex space-x-6">
+              {['Privacy Policy', 'Terms of Service', 'Contact'].map((item) => (
+                <Link
+                  key={item}
+                  href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                  className="text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors text-sm font-crimson-pro"
+                >
+                  {item}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   )
