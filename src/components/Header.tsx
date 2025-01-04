@@ -16,10 +16,10 @@ export default function Header() {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About Us' },
     { href: '/community', label: 'Our Community' },
-    { href: '/team', label: 'Our Team' },
-    { href: '/blog', label: 'Blog' },
+    // { href: '/team', label: 'Our Team' },
+    // { href: '/blog', label: 'Blog' },
     { href: '/services', label: 'Services' },
-    { href: '/contact', label: 'Contact Us' },
+    // { href: '/contact', label: 'Contact Us' },
   ]
 
   return (

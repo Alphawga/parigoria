@@ -36,6 +36,15 @@ const crimsonPro = localFont({
 export const metadata: Metadata = {
   title: "Parigoriá - Mental Health Support Community",
   description: "A virtual haven for mental health support, offering education and professional therapy to people of all ages.",
+  icons: {
+    icon: [
+      { url: "/parigoria-favicon.png", sizes: "32x32" },
+      { url: "/parigoria-favicon.png", sizes: "64x64" },
+    ],
+    apple: [
+      { url: "/parigoria-favicon.png" },
+    ],
+  },
 };
 
 export default function RootLayout({
