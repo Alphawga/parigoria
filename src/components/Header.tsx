@@ -55,7 +55,7 @@ export default function Header() {
           href="http://eepurl.com/i6RKUs"
           className="hidden md:block bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition-colors"
         >
-          Sign Up!
+          Subscribe to Newsletter
         </Link>
 
         {/* Mobile Menu Button */}
@@ -93,7 +93,7 @@ export default function Header() {
                 className="mt-4 bg-purple-600 text-white px-4 py-2 rounded text-center hover:bg-purple-700 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Sign Up!
+                Subscribe to Newsletter
               </Link>
             </nav>
           </motion.div>
