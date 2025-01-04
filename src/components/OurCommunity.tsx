@@ -22,7 +22,7 @@ export default function OurCommunity() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Mental health is just as important as physical health. At Parigoriá, we're building a global network committed to spreading love and light. We are:
+          Mental health is just as important as physical health. At Parigoriá, we&apos;re building a global network committed to spreading love and light. We are:
         </motion.p>
         <motion.ul 
           className="list-disc pl-6 mb-6 text-lg text-gray-700 dark:text-gray-300 space-y-2"

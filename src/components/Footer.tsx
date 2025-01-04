@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { Instagram, Twitter, Linkedin } from 'lucide-react'
-import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 export default function Footer() {
